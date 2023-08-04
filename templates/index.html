@@ -1,43 +1,10 @@
-<!DOCTYPE html>
-<html lang ="en">
-<head>
-    <meta charset = "UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1></h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<form action="{% url 'thanks'%}" method="POST">
-    {% csrf_token %}
-    
-    <label>Имя</label>
-    <input name = "name">
-    <label>Телефон</label>
-    <input name = "phone">
-    <button type = "submit">ОТПРАВИТЬ</button>
-</form>
+{% block content %}
+<h2>Данные из индекса</h2>
 
+<img src="{% static 'img\1.jpg'%}" height = "300"
 
-
-{% if object_list%}
-<table border = "1">
-    <tr>
-        <th>Id</th>
-        <th>Дата</th>
-        <th>Имя</th>
-        <th>Телефон</th>
-    </tr>
-{% for obj in object_list %}
-    <tr>
-        <th>{{obj.id}}</th>
-        <th>{{obj.order_dr}}</th>
-        <th>{{obj.order_name}}</th>
-        <th>{{obj.order_phone}}</th>
-{%endfor%}
-</table>
-{%else %}
-Нет данных
-{%endif%}
-
-</body>
-</html>
+{% include 'index_old.html' %}
+{% endblock %}
